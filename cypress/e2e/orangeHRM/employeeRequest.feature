@@ -4,7 +4,7 @@ Feature: Add Employee Page
     When User Navigates to Add Employee Page
     And User Fills the Inputs
     And User Clicks On Save Button
-    Then Successfully Added Alert
+    Then Successfully Added Toast
 
   Scenario: Add Employee Request
     Then Post Request Done
