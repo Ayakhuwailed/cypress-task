@@ -22,8 +22,6 @@ Then('Successfully Added Toast', () => {
     employeeAssertion.successfullyAddedToast()
     employeeAction.getId().then((id: number) => {
         employeesAddedIds.push(id)
-        // cy.wait(8000)
-        // employeeAssertion.employeeDetails(id)
     })
 
 })

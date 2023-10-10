@@ -19,11 +19,7 @@ Cypress.Commands.add('login', (username = 'Admin', password = 'admin123') => {
 
     cy.intercept("/web/index.php/api/v2/dashboard/employees/locations").as("locations")
 
-    cy.intercept("POST", "/web/index.php/events/push",
-        {
-            statusCode: 200,
-        }
-    ).as("push")
+    cy.intercept("POST", "/web/index.php/events/push").as("push")
     cy.visit('/auth/login')
     cy.get('[name="username"]').type(username)
     cy.get('[name="password"]').type(password)

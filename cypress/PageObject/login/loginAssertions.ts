@@ -1,14 +1,11 @@
 export default class LoginPageAssertion {
-    checkDashPage() {
-        cy.url().should('contain', 'dashboard/index')
-    }
 
-    checkLoginAuthPage() {
+    checkLoginAuthPageIsOpen() {
         cy.url().should('contain', '/auth/login')
     }
 
-    checkLoginButtonText() {
-        cy.get('[type="submit"]').should("contain", 'Login')
+    checkLoginButtonContainsValue(message, isExist) {
+        isExist && cy.get('[type="submit"]').should("contain", message)
     }
 
     checkInValidCredentials() {
@@ -23,11 +20,12 @@ export default class LoginPageAssertion {
         cy.contains('Invalid credentials').should('have.css', 'color', 'rgb(235, 9, 16)')
     }
 
-    checkUsernameValue(value,isEmpty) {
-        cy.get('[name="username"]').should("contain",isEmpty?'':value)
+    checkUsernameValue(value, isEmpty) {
+        cy.get('[name="username"]').should("contain", isEmpty ? '' : value)
     }
-    checkPasswordValue(value,isEmpty) {
-        cy.get('[name="password"]').should("contain",isEmpty?'':value)
+
+    checkPasswordValue(value, isEmpty) {
+        cy.get('[name="password"]').should("contain", isEmpty ? '' : value)
     }
 
     checkRedBorderUsername() {
@@ -41,12 +39,13 @@ export default class LoginPageAssertion {
     }
 
     checkUsernameInputHasErrorMessage(message, isExist) {
-        isExist &&cy.get('[name="username"]').parents().eq(1).contains("span", message).should('exist')
-        isExist &&cy.get('[name="username"]').parents().eq(1).contains("span", message).should('have.css', 'color', 'rgb(235, 9, 16)')
+        isExist && cy.get('[name="username"]').parents().eq(1).contains("span", message).should('exist')
+        isExist && cy.get('[name="username"]').parents().eq(1).contains("span", message).should('have.css', 'color', 'rgb(235, 9, 16)')
     }
+
     checkPasswordInputHasErrorMessage(message, isExist) {
-        isExist &&cy.get('[name="password"]').parents().eq(1).contains("span", message).should('exist')
-        isExist &&cy.get('[name="password"]').parents().eq(1).contains("span", message).should('have.css', 'color', 'rgb(235, 9, 16)')
+        isExist && cy.get('[name="password"]').parents().eq(1).contains("span", message).should('exist')
+        isExist && cy.get('[name="password"]').parents().eq(1).contains("span", message).should('have.css', 'color', 'rgb(235, 9, 16)')
 
     }
 }
