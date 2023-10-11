@@ -1,6 +1,6 @@
 import {Given, Then, When} from "@badeball/cypress-cucumber-preprocessor";
-import dashboardPageActions from "../../../pageObject/dashboardPage/dashboardActions"
-import dashboardAssertion from "../../../pageObject/dashboardPage/dashboardAssertions";
+import dashboardPageActions from "../../../pageObjects/dashboardPage/dashboardActions"
+import dashboardAssertion from "../../../pageObjects/dashboardPage/dashboardAssertions";
 
 const dashboardPageAction=new dashboardPageActions()
 let dashboardAssertions=new dashboardAssertion()

@@ -1,7 +1,7 @@
 import {And, Then, When} from "@badeball/cypress-cucumber-preprocessor";
-import employeeActions from "../../../pageObject/employeePage/employeeActions"
-import employeeAssertions from "../../../pageObject/employeePage/employeeAssertions"
-import dataUtils from "../../../pageObject/employeePage/dataUtils"
+import employeeActions from "../../../pageObjects/employeePage/employeeActions"
+import employeeAssertions from "../../../pageObjects/employeePage/employeeAssertions"
+import dataUtils from "../../../pageObjects/employeePage/dataUtils"
 
 let employeeAction = new employeeActions();
 let employeeAssertion = new employeeAssertions();

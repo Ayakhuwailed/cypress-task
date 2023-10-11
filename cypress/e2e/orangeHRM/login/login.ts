@@ -1,7 +1,7 @@
 import {And, Before, DataTable, Given, Then, When} from "@badeball/cypress-cucumber-preprocessor";
-import loginPageActions from "../../../pageObject/login/loginActions";
-import loginPageAssertions from "../../../pageObject/login/loginAssertions"
-import dashboardAssertion from "../../../pageObject/dashboardPage/dashboardAssertions"
+import loginPageActions from "../../../pageObjects/login/loginActions";
+import loginPageAssertions from "../../../pageObjects/login/loginAssertions"
+import dashboardAssertion from "../../../pageObjects/dashboardPage/dashboardAssertions"
 
 let loginActions = new loginPageActions();
 let loginAssertions = new loginPageAssertions();
