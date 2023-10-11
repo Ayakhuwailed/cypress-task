@@ -30,7 +30,7 @@ Then('Successfully Added Toast', () => {
 
 })
 Then('Post Request Done', () => {
-    dataUtil.addEmployeeReq().then((id: number) => {
+    dataUtil.createEmployee().then((id: number) => {
         employeesAddedIds.push(id)
     })
 })
@@ -38,6 +38,6 @@ Then('Search Request Done',()=>{
     dataUtil.getEmployeeByEmployeeId('415')
 })
 afterEach(() => {
-    dataUtil.deleteEmployeeReq(employeesAddedIds)
+    dataUtil.deleteEmployee(employeesAddedIds)
     employeesAddedIds = [];
 })
