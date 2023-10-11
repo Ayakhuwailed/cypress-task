@@ -1,9 +1,13 @@
 import {And, Then, When} from "@badeball/cypress-cucumber-preprocessor";
-import employeeActions from "../../../pageObject/addEmployee/employeeActions"
-import employeeAssertions from "../../../pageObject/addEmployee/employeeAssertions"
+import employeeActions from "../../../pageObject/employeePage/employeeActions"
+import employeeAssertions from "../../../pageObject/employeePage/employeeAssertions"
+import dataUtils from "../../../pageObject/employeePage/dataUtils"
 
 let employeeAction = new employeeActions();
 let employeeAssertion = new employeeAssertions();
+let dataUtil = new dataUtils();
+
+
 let employeesAddedIds: number[] = []
 beforeEach(() => {
     cy.login()
@@ -26,11 +30,14 @@ Then('Successfully Added Toast', () => {
 
 })
 Then('Post Request Done', () => {
-    employeeAction.addEmployeeReq().then((id: number) => {
+    dataUtil.addEmployeeReq().then((id: number) => {
         employeesAddedIds.push(id)
     })
 })
+Then('Search Request Done',()=>{
+    dataUtil.getEmployeeByEmployeeId('415')
+})
 afterEach(() => {
-    employeeAction.deleteEmployeeReq(employeesAddedIds)
+    dataUtil.deleteEmployeeReq(employeesAddedIds)
     employeesAddedIds = [];
 })
