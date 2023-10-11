@@ -21,25 +21,6 @@ export default class employeeActions {
         });
 
     }
-    addEmployeeReq() {
-         return cy.request({
-            method: 'POST', url: '/api/v2/pim/employees', body:
-                {
-                    empPicture: null,
-                    employeeId: "415",
-                    firstName: "test",
-                    lastName: "test",
-                    middleName: "test"
-                }
-        }).then((res) : number=>{
-             return res.body.data.empNumber
-         });
-    }
-    deleteEmployeeReq(ids:number[]) {
-        cy.request({
-            method: 'DELETE', url: '/api/v2/pim/employees',
-            body: {ids}
-        })
-    }
+
 
 }

@@ -10,6 +10,10 @@ Feature: Add Employee Page
     Then Post Request Done
 
 
+  Scenario: Search Employee By Id Request
+    Then Search Request Done
+
+
 
 
 
