@@ -1,9 +1,11 @@
-import {After, And, Before, DataTable, Given, Then, When} from "@badeball/cypress-cucumber-preprocessor";
-import loginPageActions from "../../../PageObject/Login/LoginActions";
-import loginPageAssertions from "../../../PageObject/Login/LoginAssertions"
+import {And, Before, DataTable, Given, Then, When} from "@badeball/cypress-cucumber-preprocessor";
+import loginPageActions from "../../../pageObject/login/loginActions";
+import loginPageAssertions from "../../../pageObject/login/loginAssertions"
+import dashboardAssertion from "../../../pageObject/dashboardPage/dashboardAssertions"
 
 let loginActions = new loginPageActions();
 let loginAssertions = new loginPageAssertions();
+let dashboardAssertions = new dashboardAssertion()
 Before(() => {
     cy.reload()
 })
@@ -12,19 +14,19 @@ Given("Open orangeHRM Site", () => {
     cy.visit('/auth/login')
 });
 Then("Page Should Load Successfully", () => {
-    loginAssertions.LoginAuthPage()
+    loginAssertions.checkLoginAuthPageIsOpen()
 });
 Then("Page Should Contain a Button With The Text Login", () => {
-    loginAssertions.LoginButtonText();
+    loginAssertions.checkLoginButtonContainsValue("Login", true);
 });
 
-When('User Types as Following',(table:DataTable)=>{
+When('User Types as Following', (table: DataTable) => {
     table.hashes().forEach((data) => {
-       loginActions.typeUsername(data.Username)
-        loginActions.typePassword(data.Password)
+        loginActions.typeInUsernameInputField(data.Username)
+        loginActions.typeInPasswordInputField(data.Password)
         loginActions.clickOnLoginButton()
-        loginAssertions.inValidCredentials()
-        loginAssertions.colorInvalidCredentialsText()
+        loginAssertions.checkInValidCredentials()
+        loginAssertions.checkColorInvalidCredentialsText()
     });
 })
 
@@ -32,55 +34,57 @@ And("User Clicks on Login Button", () => {
     loginActions.clickOnLoginButton()
 })
 Then('User Should See Error Message', () => {
-    loginAssertions.inValidCredentials()
-    loginAssertions.backgroundInvalidCredentialsText()
-    loginAssertions.colorInvalidCredentialsText()
+    loginAssertions.checkInValidCredentials()
+    loginAssertions.checkBackgroundInvalidCredentialsText()
+    loginAssertions.checkColorInvalidCredentialsText()
 })
 And('User Should remain on the login page', () => {
-    loginAssertions.LoginAuthPage()
+    loginAssertions.checkLoginAuthPageIsOpen()
 })
 And('Both Inputs Should Be Empty', () => {
-    loginAssertions.emptyUsername()
-    loginAssertions.emptyPassword()
+    loginAssertions.checkUsernameValue('', true)
+    loginAssertions.checkPasswordValue('', true)
 })
 
 Then('User Should See Required Text Under Both Inputs', () => {
-    loginAssertions.requiredText()
-})
-And('The Required Text Color Is Red', () => {
-    loginAssertions.requiredTextColor()
+    loginAssertions.checkUsernameInputHasErrorMessage('Required', true)
+    loginAssertions.checkPasswordInputHasErrorMessage('Required', true)
 })
 And('The Inputs Border Should Be Red', () => {
-    loginAssertions.redBorderUsername()
-    loginAssertions.redBorderPassword()
+    loginAssertions.checkRedBorderUsername()
+    loginAssertions.checkRedBorderPassword()
 })
 
 Given('Username Input', () => {
     loginActions.getUsername()
 })
 Then('User Should See Required Text Under Username Input', () => {
-    loginAssertions.requiredText()
+    loginAssertions.checkUsernameInputHasErrorMessage('Required', true)
 })
 And('The Username Input Border Should Be Red', () => {
-    loginAssertions.redBorderUsername()
+    loginAssertions.checkRedBorderUsername()
 })
 
 Given('Password Input', () => {
     loginActions.getPassword()
 })
 Then('User Should See Required Text Under Password Input', () => {
-    loginAssertions.requiredText()
+    loginAssertions.checkPasswordInputHasErrorMessage('Required', true)
 })
 And('The Password Input Border Should Be Red', () => {
-    loginAssertions.redBorderPassword()
+    loginAssertions.checkRedBorderPassword()
 })
 
-When("User Types Valid Username", () => {
-    loginActions.typeUsername('Admin')
-})
-And("User Types Valid Password", () => {
-    loginActions.typePassword('admin123')
+When("User Login With Valid Credentials", () => {
+    cy.login()
 })
 Then("User Should Login Successfully and Home Page Should Load Successfully", () => {
-    loginAssertions.DashPage()
+    dashboardAssertions.checkDashboardPageIsOpen()
+})
+When("User Types Valid Username", () => {
+    loginActions.typeInUsernameInputField('Admin')
+})
+And("User Types Valid Password", () => {
+    loginActions.typeInPasswordInputField('admin123')
+
 })

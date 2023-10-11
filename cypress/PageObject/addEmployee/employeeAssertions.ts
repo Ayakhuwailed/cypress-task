@@ -5,5 +5,4 @@ export default class employeeAssertions {
         cy.location('pathname', {timeout: 60000})
             .should('include', '/pim/viewPersonalDetails/empNumber/');
     }
-
 }

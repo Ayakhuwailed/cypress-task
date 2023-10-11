@@ -1,11 +1,13 @@
 export default class loginPageActions {
-    typeUsername(username: string) {
+
+    typeInUsernameInputField(username: string) {
         cy.get('[name="username"]').type(username)
     }
 
-    typePassword(password: string) {
+    typeInPasswordInputField(password: string) {
         cy.get('[name="password"]').type(password)
     }
+
 
     clickOnLoginButton() {
         cy.contains(" Login ").click()
