@@ -1,10 +1,11 @@
-import {NewEmployee} from "@support/createDataTypes";
-import {EmployeeData} from "@support/types";
+import {NewEmployee} from "@support/employeePage/createDataTypes";
+import {EmployeeData} from "@support/employeePage/types";
+import {createNewEmployeeBody} from "@support/employeePage/constants";
 
 export default class DataUtils {
-    createEmployee(employee:NewEmployee) {
+    createNewEmployee(employee:NewEmployee) {
         return cy.request({
-            method: 'POST', url: '/api/v2/pim/employees', body:employee
+            method: 'POST', url: '/api/v2/pim/employees', body:createNewEmployeeBody(employee)
         }).then((res) : number=>{
             return res.body.data.empNumber
         });
