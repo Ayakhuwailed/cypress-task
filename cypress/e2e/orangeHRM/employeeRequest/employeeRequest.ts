@@ -2,6 +2,7 @@ import {And, Then, When} from "@badeball/cypress-cucumber-preprocessor";
 import employeeActions from "../../../pageObjects/employeePage/employeeActions"
 import employeeAssertions from "../../../pageObjects/employeePage/employeeAssertions"
 import dataUtils from "../../../pageObjects/employeePage/dataUtils"
+import {NewEmployee} from "@support/employeePage/createDataTypes";
 
 let employeeAction = new employeeActions();
 let employeeAssertion = new employeeAssertions();
@@ -9,6 +10,11 @@ let dataUtil = new dataUtils();
 
 
 let employeesAddedIds: number[] = []
+const employee: NewEmployee = {
+    employeeId: "1234",
+    firstName: "aya",
+    lastName: "khuwailed",
+}
 beforeEach(() => {
     cy.login()
 })
@@ -30,12 +36,13 @@ Then('Successfully Added Toast', () => {
 
 })
 Then('Post Request Done', () => {
-    dataUtil.createEmployee().then((id: number) => {
+    dataUtil.createNewEmployee(employee).then((id: number) => {
         employeesAddedIds.push(id)
     })
 })
 Then('Search Request Done',()=>{
-    dataUtil.getEmployeeByEmployeeId('415')
+    dataUtil.getEmployeeByEmployeeId(employee.employeeId)
+    console.log(employee.employeeId)
 })
 afterEach(() => {
     dataUtil.deleteEmployee(employeesAddedIds)
