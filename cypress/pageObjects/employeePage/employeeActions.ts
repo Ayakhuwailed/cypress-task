@@ -4,10 +4,9 @@ export default class employeeActions {
     }
 
     fillAddEmployeeInputs() {
-        cy.get('[name="firstName"]').type('test')
-        cy.get('[name="middleName"]').type('test')
-        cy.get('[name="lastName"]').type('test')
-        cy.get('.oxd-grid-2.orangehrm-full-width-grid').find('input').clear().type('415')
+        cy.get('[name="firstName"]').type('aya')
+        cy.get('[name="lastName"]').type('khuwailed')
+        cy.get('.oxd-grid-2.orangehrm-full-width-grid').find('input').clear().type('1234')
 
     }
 
@@ -15,8 +14,8 @@ export default class employeeActions {
         cy.get('[type="submit"]').click()
     }
     getId(){
-       return   cy.url().then((url):number => {
-             const id=parseInt(url.split('/').pop());
+       return   cy.url().then((url):string => {
+             const id=url.split('/').pop();
              return id
         });
 
