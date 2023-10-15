@@ -9,7 +9,7 @@ let employeeAssertion = new employeeAssertions();
 let dataUtil = new dataUtils();
 
 
-let employeesAddedIds: number[] = []
+let employeesAddedId: string = '';
 const employee: NewEmployee = {
     employeeId: "1234",
     firstName: "aya",
@@ -23,6 +23,7 @@ When('User Navigates to Add Employee Page', () => {
     employeeAction.navigateToAddEmployeePage()
 })
 And('User Fills the Inputs', () => {
+    cy.wait(9000)
     employeeAction.fillAddEmployeeInputs()
 })
 And('User Clicks On Save Button', () => {
@@ -30,21 +31,20 @@ And('User Clicks On Save Button', () => {
 })
 Then('Successfully Added Toast', () => {
     employeeAssertion.successfullyAddedToast()
-    employeeAction.getId().then((id: number) => {
-        employeesAddedIds.push(id)
+    employeeAction.getId().then((id: string) => {
+        employeesAddedId = id
     })
 
 })
 Then('Post Request Done', () => {
     dataUtil.createNewEmployee(employee).then((id: number) => {
-        employeesAddedIds.push(id)
+        employeesAddedId = id.toString()
     })
 })
-Then('Search Request Done',()=>{
+Then('Search Request Done', () => {
     dataUtil.getEmployeeByEmployeeId(employee.employeeId)
-    console.log(employee.employeeId)
 })
 afterEach(() => {
-    dataUtil.deleteEmployee(employeesAddedIds)
-    employeesAddedIds = [];
+    dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
+    employeesAddedId = '';
 })
