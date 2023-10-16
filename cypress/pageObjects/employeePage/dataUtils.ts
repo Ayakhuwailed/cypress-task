@@ -4,11 +4,13 @@ import {createNewEmployeeBody} from "@support/employeePage/constants";
 
 export default class DataUtils {
     createNewEmployee(employee: NewEmployee) {
-        return cy.request({
-            method: 'POST', url: '/api/v2/pim/employees', body: createNewEmployeeBody(employee)
-        }).then((res): number => {
-            return res.body.data.empNumber
-        });
+        return this.getEmployeeByEmployeeId((employee.employeeId)).then((emp) => {
+            this.deleteEmployeeByEmployeeId(emp.employeeId)
+            return cy.request({
+                method: 'POST', url: '/api/v2/pim/employees', body: createNewEmployeeBody(employee)
+            })
+        })
+
     }
 
     deleteEmployeeByEmployeeId(id: string) {
@@ -16,10 +18,9 @@ export default class DataUtils {
             if (Array.isArray(res) && res.length === 0) {
                 return
             } else {
-                let idNum = res[0].empNumber
                 cy.request({
                     method: 'DELETE', url: '/api/v2/pim/employees',
-                    body: {ids: [idNum]}
+                    body: {ids: [res[0].empNumber]}
                 })
             }
 

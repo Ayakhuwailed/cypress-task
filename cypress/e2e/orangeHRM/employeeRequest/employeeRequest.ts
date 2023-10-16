@@ -8,22 +8,23 @@ let employeeAction = new employeeActions();
 let employeeAssertion = new employeeAssertions();
 let dataUtil = new dataUtils();
 
-
-let employeesAddedId: string = '';
 const employee: NewEmployee = {
     employeeId: "1234",
     firstName: "aya",
     lastName: "khuwailed",
 }
 beforeEach(() => {
-    cy.login()
+    cy.then(() => {
+        dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
+    })
 })
 
 When('User Navigates to Add Employee Page', () => {
+    // cy.employeePage()
     employeeAction.navigateToAddEmployeePage()
 })
 And('User Fills the Inputs', () => {
-    cy.wait(9000)
+    // cy.wait(9000)
     employeeAction.fillAddEmployeeInputs()
 })
 And('User Clicks On Save Button', () => {
@@ -31,20 +32,15 @@ And('User Clicks On Save Button', () => {
 })
 Then('Successfully Added Toast', () => {
     employeeAssertion.successfullyAddedToast()
-    employeeAction.getId().then((id: string) => {
-        employeesAddedId = id
-    })
+    employeeAction.getId()
 
 })
 Then('Post Request Done', () => {
-    dataUtil.createNewEmployee(employee).then((id: number) => {
-        employeesAddedId = id.toString()
-    })
+    dataUtil.createNewEmployee(employee)
 })
 Then('Search Request Done', () => {
     dataUtil.getEmployeeByEmployeeId(employee.employeeId)
 })
 afterEach(() => {
     dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
-    employeesAddedId = '';
 })

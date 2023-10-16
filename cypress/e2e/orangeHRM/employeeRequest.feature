@@ -1,4 +1,4 @@
-Feature: Add Employee Page
+Feature: Employee Page
 
   Scenario: Add Employee
     When User Navigates to Add Employee Page

@@ -3,6 +3,6 @@ export interface NewEmployee {
     firstName: string,
     middleName?: string
     lastName: string,
-    empPicture?: string
+    empPicture?: string,
 
 }

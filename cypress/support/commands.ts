@@ -2,6 +2,10 @@ declare namespace Cypress {
     interface Chainable {
         login(username?: string, password?: string): void
     }
+
+    interface Chainable {
+        employeePage(): void
+    }
 }
 
 Cypress.Commands.add('login', (username = 'Admin', password = 'admin123') => {
@@ -26,3 +30,11 @@ Cypress.Commands.add('login', (username = 'Admin', password = 'admin123') => {
     cy.contains(" Login ").click()
     cy.wait(["@time-at-work", "@action-summary", "@shortcuts", "@feed-limit", "@leavesDate", "@subunit", "@locations", "@push"])
 })
+// Cypress.Commands.add('employeePage', () => {
+//     cy.intercept("/web/index.php/api/v2/pim/employees?**").as("employees-limits")
+//     cy.intercept("/web/index.php/api/v2/admin/employment**").as("employees-status")
+//     cy.intercept("/web/index.php/api/v2/admin/job**").as("job-title")
+//     cy.intercept("/web/index.php/api/v2/admin/subunits").as("subunits")
+//     cy.visit('/pim/addEmployee')
+//     cy.wait(["@employees-limits", "@employees-status", "@job-title", "@subunits"])
+// })
