@@ -14,9 +14,7 @@ const employee: NewEmployee = {
     lastName: "khuwailed",
 }
 beforeEach(() => {
-    cy.then(() => {
-        dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
-    })
+    dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
 })
 
 When('User Navigates to Add Employee Page', () => {

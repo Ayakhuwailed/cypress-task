@@ -13,7 +13,7 @@ const user: NewUser =
     }
 beforeEach(() => {
     cy.then(() => {
-        dataUtil.deletesUserByUserId(user)
+        dataUtil.deletesUserByUsername(user.username)
     })
 })
 Then('Post Request Done', () => {
@@ -23,5 +23,5 @@ Then('Search Request Done', () => {
     dataUtil.getUserByUsername(user.username)
 })
 afterEach(() => {
-    dataUtil.deletesUserByUserId(user)
+    dataUtil.deletesUserByUsername(user.username)
 })
