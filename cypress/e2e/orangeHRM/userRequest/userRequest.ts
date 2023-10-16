@@ -7,14 +7,12 @@ const user: NewUser =
     {
         username: "ayakh",
         password: "1234aaa",
-        status: true,
-        userRoleId: 1,
-        empNumber: 2
+        status: "Enabled",
+        userRoleName: "Admin",
+        empNumber: 7
     }
 beforeEach(() => {
-    cy.then(() => {
         dataUtil.deletesUserByUsername(user.username)
-    })
 })
 Then('Post Request Done', () => {
     dataUtil.createNewUser(user)
