@@ -4,6 +4,6 @@ export interface EmployeeData {
     middleName?: string
     lastName: string,
     empNumber: number,
-    empPicture?: string
+    empPicture?: string,
 
 }

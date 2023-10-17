@@ -9,7 +9,6 @@ let dashboardAssertions = new dashboardAssertion()
 Before(() => {
     cy.reload()
 })
-
 Given("Open orangeHRM Site", () => {
     cy.visit('/auth/login')
 });
