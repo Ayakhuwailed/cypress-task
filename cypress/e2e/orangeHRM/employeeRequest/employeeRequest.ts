@@ -4,6 +4,7 @@ import employeeAssertions from "../../../pageObjects/employeePage/employeeAssert
 import dataUtils from "../../../pageObjects/employeePage/dataUtils"
 import userDataUtils from "../../../pageObjects/userPage/dataUtils"
 import {NewEmployee} from "@support/employeePage/createDataTypes";
+import {NewUser} from "@support/userPage/createDataTypes";
 
 let employeeAction = new employeeActions();
 let employeeAssertion = new employeeAssertions();
@@ -14,6 +15,13 @@ const employee: NewEmployee = {
     employeeId: "1234",
     firstName: "aya",
     lastName: "khuwailed",
+}
+const user:NewUser={
+    username: "ayaakh",
+    password: "1234aaa",
+    status: "Enabled",
+    userRoleName: "ESS",
+    empNumber:7
 }
 beforeEach(() => {
     dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
@@ -42,17 +50,13 @@ Then('Search Request Done', () => {
 Then("Post Employee With User Request Done",()=>{
     dataUtil.createNewEmployee(employee).then((res)=>{
         userDataUtil.createNewUser( {
-            username: "ayaakh",
-            password: "1234aaa",
-            status: "Enabled",
-            userRoleName: "ESS",
+          ...user,
             empNumber: res.body.data.empNumber
-        }).then((resp)=>{
-            userDataUtil.deletesUserByUsername(resp.body.data.userName)
         })
     })
 
 })
 afterEach(() => {
+    userDataUtil.deleteUserByUsername(user.username)
     dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
 })

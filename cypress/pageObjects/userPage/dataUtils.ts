@@ -5,13 +5,13 @@ import {createNewUserBody} from "@support/userPage/constants";
 export default class DataUtils {
     createNewUser(user: NewUser) {
         return this.getUserByUsername((user.username)).then((data) => {
-                this.deletesUserByUsername(data.username)
+                this.deleteUserByUsername(data.username)
                 return cy.request({
                     method: 'POST', url: '/api/v2/admin/users', body: createNewUserBody(user)
                 })
             })
     }
-    deletesUserByUsername(username: string) {
+    deleteUserByUsername(username: string) {
         this.getUserByUsername(username).then((res) => {
             if (Array.isArray(res) && res.length === 0) {
                 return
