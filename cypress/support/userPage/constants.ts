@@ -1,5 +1,5 @@
-import {NewUser} from "@support/userPage/createDataTypes";
-import {UserRoleType} from "@support/userPage/types";
+import { NewUser } from "@support/userPage/createDataTypes";
+import { UserRoleType } from "@support/userPage/types";
 
 export const createNewUserBody = (user: NewUser) => {
     const userRoleId = UserRoleType[user.userRoleName];
@@ -8,6 +8,6 @@ export const createNewUserBody = (user: NewUser) => {
         password: user.password,
         status: user.status === "Enabled",
         userRoleId,
-        username: user.username
-    }
+        username: user.username,
+    };
 };
