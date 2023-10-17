@@ -1,5 +1,1 @@
-export default class userActions {
-
-
-
-}
+export default class userActions {}

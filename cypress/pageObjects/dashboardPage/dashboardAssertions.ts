@@ -1,6 +1,5 @@
-export default class DashboardAssertions{
+export default class DashboardAssertions {
     checkDashboardPageIsOpen() {
-        cy.url().should('contain', 'dashboard/index')
+        cy.url().should("contain", "dashboard/index");
     }
-
 }

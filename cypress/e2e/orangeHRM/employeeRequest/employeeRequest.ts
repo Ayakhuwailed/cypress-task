@@ -1,62 +1,68 @@
-import {And, Then, When} from "@badeball/cypress-cucumber-preprocessor";
-import employeeActions from "../../../pageObjects/employeePage/employeeActions"
-import employeeAssertions from "../../../pageObjects/employeePage/employeeAssertions"
-import dataUtils from "../../../pageObjects/employeePage/dataUtils"
-import userDataUtils from "../../../pageObjects/userPage/dataUtils"
-import {NewEmployee} from "@support/employeePage/createDataTypes";
-import {NewUser} from "@support/userPage/createDataTypes";
+import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { NewEmployee } from "@support/employeePage/createDataTypes";
+import { NewUser } from "@support/userPage/createDataTypes";
+import dataUtils from "../../../pageObjects/employeePage/dataUtils";
+import employeeActions from "../../../pageObjects/employeePage/employeeActions";
+import employeeAssertions from "../../../pageObjects/employeePage/employeeAssertions";
+import userDataUtils from "../../../pageObjects/userPage/dataUtils";
 
-let employeeAction = new employeeActions();
-let employeeAssertion = new employeeAssertions();
-let dataUtil = new dataUtils();
-let userDataUtil = new userDataUtils();
+const employeeAction = new employeeActions();
+const employeeAssertion = new employeeAssertions();
+const dataUtil = new dataUtils();
+const userDataUtil = new userDataUtils();
 
 const employee: NewEmployee = {
     employeeId: "1234",
     firstName: "aya",
     lastName: "khuwailed",
-}
-const user:NewUser={
+};
+const user: NewUser = {
     username: "ayaakh",
     password: "1234aaa",
     status: "Enabled",
     userRoleName: "ESS",
-    empNumber:7
-}
+    empNumber: 7,
+};
+
 beforeEach(() => {
-    dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
-})
+    dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
+});
 
-When('User Navigates to Add Employee Page', () => {
-    employeeAction.navigateToAddEmployeePage()
-})
-And('User Fills the Inputs', () => {
-    employeeAction.fillAddEmployeeInputs()
-})
-And('User Clicks On Save Button', () => {
-    employeeAction.clickOnSaveButton()
-})
-Then('Successfully Added Toast', () => {
-    employeeAssertion.successfullyAddedToast()
-    employeeAction.getId()
+When("User Navigates to Add Employee Page", () => {
+    employeeAction.navigateToAddEmployeePage();
+});
 
-})
-Then('Post Request Done', () => {
-    dataUtil.createNewEmployee(employee)
-})
-Then('Search Request Done', () => {
-    dataUtil.getEmployeeByEmployeeId(employee.employeeId)
-})
-Then("Post Employee With User Request Done",()=>{
-    dataUtil.createNewEmployee(employee).then((res)=>{
-        userDataUtil.createNewUser( {
-          ...user,
-            empNumber: res.body.data.empNumber
-        })
-    })
+When("User Fills the Inputs", () => {
+    employeeAction.fillAddEmployeeInputs();
+});
 
-})
+When("User Clicks On Save Button", () => {
+    employeeAction.clickOnSaveButton();
+});
+
+Then("Successfully Added Toast", () => {
+    employeeAssertion.successfullyAddedToast();
+    employeeAction.getId();
+});
+
+Then("Post Request Done", () => {
+    dataUtil.createNewEmployee(employee);
+});
+
+Then("Search Request Done", () => {
+    dataUtil.getEmployeeByEmployeeId(employee.employeeId);
+});
+
+Then("Post Employee With User Request Done", () => {
+    dataUtil.createNewEmployee(employee).then((res) => {
+        userDataUtil.createNewUser({
+            ...user,
+            empNumber: res.body.data.empNumber,
+        });
+    });
+});
+
 afterEach(() => {
-    userDataUtil.deleteUserByUsername(user.username)
-    dataUtil.deleteEmployeeByEmployeeId(employee.employeeId)
-})
+    userDataUtil.deleteUserByUsername(user.username);
+    dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
+});
