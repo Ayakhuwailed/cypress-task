@@ -12,7 +12,7 @@ const user: NewUser =
         empNumber: 7
     }
 beforeEach(() => {
-        dataUtil.deletesUserByUsername(user.username)
+        dataUtil.deleteUserByUsername(user.username)
 })
 Then('Post Request Done', () => {
     dataUtil.createNewUser(user)
@@ -21,5 +21,5 @@ Then('Search Request Done', () => {
     dataUtil.getUserByUsername(user.username)
 })
 afterEach(() => {
-    dataUtil.deletesUserByUsername(user.username)
+    dataUtil.deleteUserByUsername(user.username)
 })

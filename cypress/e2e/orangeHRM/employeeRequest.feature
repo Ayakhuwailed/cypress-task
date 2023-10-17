@@ -12,6 +12,9 @@ Feature: Employee Page
   Scenario: Search Employee By Id Request
     Then Search Request Done
 
+    Scenario: Add Employee With User
+      Then Post Employee With User Request Done
+
 
 
 
