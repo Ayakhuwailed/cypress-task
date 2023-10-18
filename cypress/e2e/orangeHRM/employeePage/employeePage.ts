@@ -14,7 +14,7 @@ const dataUtil = new dataUtils();
 const userDataUtil = new userDataUtils();
 
 const employee: NewEmployee = getEmployee()
-const user: NewUser = getUser()
+const user: NewUser = {...getUser(),empNumber:7}
 
 beforeEach(() => {
     dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
