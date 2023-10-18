@@ -5,11 +5,14 @@ export default class employeeActions {
         cy.visit("/pim/addEmployee");
         cy.wait(["@employees", "@users"]);
     }
-
-    fillAddEmployeeInputs() {
-        cy.get('[name="firstName"]').type("aya");
-        cy.get('[name="lastName"]').type("khuwailed");
-        cy.get(".oxd-grid-2.orangehrm-full-width-grid").find("input").clear().type("1234");
+    typeInFirstNameInputField(firstName){
+        cy.get('[name="firstName"]').type(firstName);
+    }
+    typeInLastNameInputField(lastName){
+        cy.get('[name="lastName"]').type(lastName);
+    }
+    typeInEmployeeIdInputField(id){
+        cy.get(".oxd-grid-2.orangehrm-full-width-grid").find("input").clear().type(id);
     }
 
     clickOnSaveButton() {

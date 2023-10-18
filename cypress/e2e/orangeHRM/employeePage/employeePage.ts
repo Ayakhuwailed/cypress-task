@@ -1,28 +1,20 @@
-import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
-import { NewEmployee } from "@support/employeePage/createDataTypes";
-import { NewUser } from "@support/userPage/createDataTypes";
+import {Then, When} from "@badeball/cypress-cucumber-preprocessor";
+import {NewEmployee} from "@support/employeePage/createDataTypes";
+import {NewUser} from "@support/userPage/createDataTypes";
 import dataUtils from "../../../pageObjects/employeePage/dataUtils";
 import employeeActions from "../../../pageObjects/employeePage/employeeActions";
 import employeeAssertions from "../../../pageObjects/employeePage/employeeAssertions";
 import userDataUtils from "../../../pageObjects/userPage/dataUtils";
+import {getEmployee} from "@support/employeePage/dataFakers.js";
+import {getUser} from "@support/userPage/dataFakers";
 
 const employeeAction = new employeeActions();
 const employeeAssertion = new employeeAssertions();
 const dataUtil = new dataUtils();
 const userDataUtil = new userDataUtils();
 
-const employee: NewEmployee = {
-    employeeId: "1234",
-    firstName: "aya",
-    lastName: "khuwailed",
-};
-const user: NewUser = {
-    username: "ayaakh",
-    password: "1234aaa",
-    status: "Enabled",
-    userRoleName: "ESS",
-    empNumber: 7,
-};
+const employee: NewEmployee = getEmployee()
+const user: NewUser = getUser()
 
 beforeEach(() => {
     dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
@@ -33,7 +25,9 @@ When("User Navigates to Add Employee Page", () => {
 });
 
 When("User Fills the Inputs", () => {
-    employeeAction.fillAddEmployeeInputs();
+    employeeAction.typeInFirstNameInputField("test");
+    employeeAction.typeInLastNameInputField("test");
+    employeeAction.typeInEmployeeIdInputField("1234");
 });
 
 When("User Clicks On Save Button", () => {
