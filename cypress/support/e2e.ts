@@ -1,5 +1,5 @@
 import "@support/commands";
 
 beforeEach(() => {
-    cy.login()
-})
+  cy.login();
+});

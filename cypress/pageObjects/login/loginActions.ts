@@ -1,21 +1,21 @@
 export default class loginPageActions {
-    typeInUsernameInputField(username: string) {
-        cy.get('[name="username"]').type(username);
-    }
+  typeInUsernameInputField(username: string) {
+    cy.get('[name="username"]').type(username);
+  }
 
-    typeInPasswordInputField(password: string) {
-        cy.get('[name="password"]').type(password);
-    }
+  typeInPasswordInputField(password: string) {
+    cy.get('[name="password"]').type(password);
+  }
 
-    clickOnLoginButton() {
-        cy.contains(" Login ").click();
-    }
+  clickOnLoginButton() {
+    cy.contains(" Login ").click();
+  }
 
-    getUsername() {
-        cy.get('[name="username"]');
-    }
+  getUsername() {
+    cy.get('[name="username"]');
+  }
 
-    getPassword() {
-        cy.get('[name="password"]');
-    }
+  getPassword() {
+    cy.get('[name="password"]');
+  }
 }

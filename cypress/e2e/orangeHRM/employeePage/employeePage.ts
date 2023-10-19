@@ -5,64 +5,58 @@ import dataUtils from "../../../pageObjects/employeePage/dataUtils";
 import employeeActions from "../../../pageObjects/employeePage/employeeActions";
 import employeeAssertions from "../../../pageObjects/employeePage/employeeAssertions";
 import userDataUtils from "../../../pageObjects/userPage/dataUtils";
+import { getEmployee } from "@support/employeePage/dataFakers.js";
+import { getUser } from "@support/userPage/dataFakers";
 
 const employeeAction = new employeeActions();
 const employeeAssertion = new employeeAssertions();
 const dataUtil = new dataUtils();
 const userDataUtil = new userDataUtils();
 
-const employee: NewEmployee = {
-    employeeId: "1234",
-    firstName: "aya",
-    lastName: "khuwailed",
-};
-const user: NewUser = {
-    username: "ayaakh",
-    password: "1234aaa",
-    status: "Enabled",
-    userRoleName: "ESS",
-    empNumber: 7,
-};
+const employee: NewEmployee = getEmployee();
+const user: NewUser = { ...getUser(), empNumber: 7 };
 
 beforeEach(() => {
-    dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
+  dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
 });
 
 When("User Navigates to Add Employee Page", () => {
-    employeeAction.navigateToAddEmployeePage();
+  employeeAction.navigateToAddEmployeePage();
 });
 
 When("User Fills the Inputs", () => {
-    employeeAction.fillAddEmployeeInputs();
+  employeeAction.typeInFirstNameInputField("test");
+  employeeAction.typeInLastNameInputField("test");
+  employeeAction.typeInEmployeeIdInputField("1234");
 });
 
 When("User Clicks On Save Button", () => {
-    employeeAction.clickOnSaveButton();
+  employeeAction.clickOnSaveButton();
 });
 
 Then("Successfully Added Toast", () => {
-    employeeAssertion.successfullyAddedToast();
-    employeeAction.getId();
+  employeeAssertion.successfullyAddedToast();
+  employeeAction.getId();
 });
 
 Then("Post Request Done", () => {
-    dataUtil.createNewEmployee(employee);
+  dataUtil.createNewEmployee(employee);
 });
 
 Then("Search Request Done", () => {
-    dataUtil.getEmployeeByEmployeeId(employee.employeeId);
+  dataUtil.getEmployeeByEmployeeId(employee.employeeId);
 });
 
 Then("Post Employee With User Request Done", () => {
-    dataUtil.createNewEmployee(employee).then((res) => {
-        userDataUtil.createNewUser({
-            ...user,
-            empNumber: res.body.data.empNumber,
-        });
+  dataUtil.createNewEmployee(employee).then((res) => {
+    userDataUtil.createNewUser({
+      ...user,
+      empNumber: res.body.data.empNumber,
     });
+  });
 });
 
 afterEach(() => {
-    userDataUtil.deleteUserByUsername(user.username);
-    dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
+  userDataUtil.deleteUserByUsername(user.username);
+  dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
 });
