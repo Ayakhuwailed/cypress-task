@@ -2,7 +2,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   e2e: {
-    baseUrl:'https://opensource-demo.orangehrmlive.com/web/index.php/',
+    baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/",
 
     specPattern: "**/*.feature",
     async setupNodeEvents(

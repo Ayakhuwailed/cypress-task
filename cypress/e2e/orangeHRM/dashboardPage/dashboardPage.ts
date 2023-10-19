@@ -6,13 +6,13 @@ const dashboardPageAction = new dashboardPageActions();
 const dashboardAssertions = new dashboardAssertion();
 
 Given("User Login Successfully", () => {
-    cy.login();
+  cy.login();
 });
 
 When("User Navigate to Dashboard Page", () => {
-    dashboardPageAction.navigateToDashPage();
+  dashboardPageAction.navigateToDashPage();
 });
 
 Then("Dashboard Page Should Load Successfully", () => {
-    dashboardAssertions.checkDashboardPageIsOpen();
+  dashboardAssertions.checkDashboardPageIsOpen();
 });
