@@ -11,3 +11,4 @@ export const createNewUserBody = (user: NewUser) => {
     username: user.username,
   };
 };
+[]

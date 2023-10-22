@@ -6,7 +6,7 @@ export const getUser = (prefix: string = getPrefix()): NewUser => {
     username: `Cypress test ${prefix}`,
     password: "strongPassword@123456",
     status: "Enabled",
-    userRoleName: "Admin",
+    userRoleName: "ESS",
     empNumber: 0,
   };
 };

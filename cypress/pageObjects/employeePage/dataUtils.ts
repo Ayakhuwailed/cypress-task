@@ -12,7 +12,6 @@ export default class DataUtils {
       });
     });
   }
-
   deleteEmployeeByEmployeeId(id: string) {
     this.getEmployeeByEmployeeId(id).then((res) => {
       if (Array.isArray(res) && res.length === 0) {
