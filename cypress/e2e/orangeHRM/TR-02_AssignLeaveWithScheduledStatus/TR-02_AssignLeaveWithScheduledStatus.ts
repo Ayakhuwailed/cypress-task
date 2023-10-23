@@ -1,5 +1,5 @@
-import { Then } from "@badeball/cypress-cucumber-preprocessor";
-import dataUtils from "../../../pageObjects/employeePage/dataUtils";
+import {And, Given, Then, When} from "@badeball/cypress-cucumber-preprocessor";
+import employeeDataUtils from "../../../pageObjects/employeePage/dataUtils";
 import userDataUtils from "../../../pageObjects/userPage/dataUtils";
 import leaveDataUtils from "../../../pageObjects/leavePage/dataUtils";
 import { NewEmployee } from "@support/employeePage/createDataTypes";
@@ -18,7 +18,7 @@ import {
 } from "@support/leavePage/dataFakers";
 import leavePageAssertions from "../../../pageObjects/leavePage/leavePageAssertions";
 
-const dataUtil = new dataUtils();
+const employeeDataUtil = new employeeDataUtils();
 const userDataUtil = new userDataUtils();
 const leaveDataUtil = new leaveDataUtils();
 const leaveAssertion = new leavePageAssertions();
@@ -38,54 +38,61 @@ const leaveAction: NewLeaveAction = {
   ...getLeaveAction(),
 };
 let id = 0;
+let employeeRes;
 beforeEach(() => {
-  dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
+  employeeDataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
 });
-
-Then("Assign leave with Scheduled Status", () => {
-  dataUtil
-    .createNewEmployee(employee)
-    .then((res) => {
-      userDataUtil.createNewUser({
-        ...user,
-        empNumber: res.body.data.empNumber,
-      });
-    })
-    .then((res) => {
-      leaveDataUtil.createNewLeaveEntitlements({
-        ...leaveEntitlements,
-        empNumber: res.body.data.employee.empNumber,
-      });
-    })
-    .then(() => {
-      cy.logout();
-    })
-    .then(() => {
-      cy.login("Cypress test T", "strongPassword@123456");
-    })
-    .then((res) => {
-      leaveDataUtil.createNewLeaveRequest({ ...leaveRequest }).then((res) => {
-        id = res.body.data.id;
-      });
-    })
-    .then(() => {
-      cy.logout();
-    })
-    .then(() => {
-      cy.login();
-    })
-    .then(() => {
-      leaveDataUtil.createLeaveRequestAction({ ...leaveAction }, id);
-    })
-    .then(() => {
-      cy.logout();
-    })
-    .then(() => {
-      cy.login("Cypress test T", "strongPassword@123456");
-    })
-    .then(() => {
-      leaveDataUtil.getLeaveRequestByStatus().then((res) => {
-        leaveAssertion.checkLeaveRequestIsApprove(res.body.data, id);
-      });
+Given("The system has an Employee with Login Details", () => {
+  employeeDataUtil
+      .createNewEmployee(employee)
+      .then((res) => {
+        userDataUtil.createNewUser({
+          ...user,
+          empNumber: res.body.data.empNumber,
+        }).then((res) => {
+          employeeRes = res
+        })
+      })
+})
+Given("The employee has number of entitlement", () => {
+    leaveDataUtil.createNewLeaveEntitlements({
+      ...leaveEntitlements,
+      empNumber: employeeRes.body.data.employee.empNumber,
     });
+
+  cy.logout();
+})
+When("The employee login to the system", () => {
+  cy.login("Cypress test T", "strongPassword@123456");
+})
+When("The employee requests a leave day in the future", () => {
+  leaveDataUtil.createNewLeaveRequest({...leaveRequest}).then((res) => {
+    id = res.body.data.id;
+  })
+  cy.logout();
+})
+When("The admin login to the system", () => {
+  cy.login();
+})
+When("The admin approves the leave request", () => {
+  leaveDataUtil.createLeaveRequestAction({...leaveAction}, id);
+  cy.logout();
+})
+When("The employee Opens the My Leave page", () => {
+  cy.intercept("/web/index.php/api/v2/leave/leave-requests***").as("leave-requests")
+  cy.intercept("/web/index.php/api/v2/leave/leave-periods***").as("leave-periods")
+  cy.intercept("/web/index.php/api/v2/leave/workweek***").as("workweek")
+  cy.intercept("/web/index.php/api/v2/leave/leave-types/*").as("leave-types")
+  cy.intercept("/web/index.php/api/v2/leave/holidays***").as("holidays")
+  cy.visit("/leave/viewMyLeaveList")
+  cy.wait(["@leave-requests","@leave-periods","@workweek","@leave-types","@holidays"])
+})
+Then("The leave should exist in the records table with status Scheduled", () => {
+  leaveDataUtil.getLeaveRequestByStatus().then((res) => {
+    leaveAssertion.checkLeaveRequestIsApprove(res.body.data, id);
+  });
+
+});
+afterEach(() => {
+  employeeDataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
 });
