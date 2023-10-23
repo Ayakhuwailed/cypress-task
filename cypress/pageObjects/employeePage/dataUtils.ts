@@ -1,7 +1,7 @@
 import { createNewEmployeeBody } from "@support/employeePage/constants";
 import { NewEmployee } from "@support/employeePage/createDataTypes";
 import { EmployeeData } from "@support/employeePage/types";
-export default class DataUtils {
+export default class EmployeeDataUtils {
   createNewEmployee(employee: NewEmployee) {
     return this.getEmployeeByEmployeeId(employee.employeeId).then((emp) => {
       this.deleteEmployeeByEmployeeId(emp.employeeId);

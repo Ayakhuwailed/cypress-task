@@ -9,13 +9,13 @@ import {
   NewLeaveRequest,
 } from "@support/leavePage/createDataTypes";
 
-export default class DataUtils {
+export default class LeaveDataUtils {
   createNewLeaveEntitlements(leave: NewLeaveEntitlements) {
     cy.request({
       method: "POST",
       url: "/api/v2/leave/leave-entitlements",
       body: createNewLeaveEntitlementsBody(leave),
-    })
+    });
   }
   createNewLeaveRequest(leave: NewLeaveRequest) {
     return cy.request({

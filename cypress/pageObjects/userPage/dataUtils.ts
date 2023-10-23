@@ -2,7 +2,7 @@ import { createNewUserBody } from "@support/userPage/constants";
 import { NewUser } from "@support/userPage/createDataTypes";
 import { UserData } from "@support/userPage/types";
 
-export default class DataUtils {
+export default class UserDataUtils {
   createNewUser(user: NewUser) {
     return this.getUserByUsername(user.username).then((data) => {
       this.deleteUserByUsername(data.username);
