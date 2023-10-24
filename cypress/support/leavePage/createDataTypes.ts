@@ -16,6 +16,4 @@ export interface NewLeaveRequest {
   };
   partialOption: string;
 }
-export interface NewLeaveAction {
-  action: string;
-}
+export type LeaveAction = "APPROVE" | "REJECT";

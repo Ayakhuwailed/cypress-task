@@ -7,7 +7,6 @@ import { getEmployee } from "@support/employeePage/dataFakers.js";
 import { NewUser } from "@support/userPage/createDataTypes";
 import { getUser } from "@support/userPage/dataFakers";
 import {
-  getLeaveAction,
   getLeaveEntitlements,
   getLeaveRequest,
 } from "@support/leavePage/dataFakers";
@@ -63,11 +62,11 @@ When("The admin login to the system", () => {
   cy.login();
 });
 When("The admin approves the leave request", () => {
-  leaveDataUtil
-    .createLeaveRequestAction({ ...getLeaveAction() }, id)
-    .then(() => {
-      cy.logout();
-    });
+  cy.then(() => {
+    leaveDataUtil.setLeaveRequestActionStatusByLeaveId(id, "APPROVE");
+  }).then(() => {
+    cy.logout();
+  });
 });
 When("The employee Opens the My Leave page", () => {
   leavePageAction.openLeavePage();
@@ -75,9 +74,23 @@ When("The employee Opens the My Leave page", () => {
 Then(
   "The leave should exist in the records table with status Scheduled",
   () => {
-    leavePageAssertion.checkLeaveRequestIsApprove(
+    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+      0,
+      "Status",
+      "Scheduled",
+      true
+    );
+    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+      0,
+      "Date",
       getLeaveRequest().fromDate,
-      getLeaveRequest().toDate
+      true
+    );
+    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+      0,
+      "Date",
+      getLeaveRequest().toDate,
+      true
     );
     cy.then(() => {
       cy.logout();

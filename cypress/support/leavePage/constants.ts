@@ -1,5 +1,5 @@
 import {
-  NewLeaveAction,
+  LeaveAction,
   NewLeaveEntitlements,
   NewLeaveRequest,
 } from "@support/leavePage/createDataTypes";
@@ -16,8 +16,8 @@ export const createNewLeaveRequestBody = (leave: NewLeaveRequest) => {
     comment: leave.comment || null,
   };
 };
-export const createNewLeaveRequestActionBody = (action: NewLeaveAction) => {
+export const leaveRequestActionStatusBody = (action: LeaveAction) => {
   return {
-    ...action,
+    action,
   };
 };

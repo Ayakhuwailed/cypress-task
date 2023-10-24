@@ -1,10 +1,10 @@
 import {
   createNewLeaveEntitlementsBody,
-  createNewLeaveRequestActionBody,
+  leaveRequestActionStatusBody,
   createNewLeaveRequestBody,
 } from "@support/leavePage/constants";
 import {
-  NewLeaveAction,
+  LeaveAction,
   NewLeaveEntitlements,
   NewLeaveRequest,
 } from "@support/leavePage/createDataTypes";
@@ -24,17 +24,11 @@ export default class LeaveDataUtils {
       body: createNewLeaveRequestBody(leave),
     });
   }
-  createLeaveRequestAction(action: NewLeaveAction, requestId: number) {
+  setLeaveRequestActionStatusByLeaveId( leaveId: number,action: LeaveAction) {
     return cy.request({
       method: "PUT",
-      url: `api/v2/leave/employees/leave-requests/${requestId}`,
-      body: createNewLeaveRequestActionBody(action),
-    });
-  }
-  getLeaveRequestByStatus() {
-    return cy.request({
-      method: "GET",
-      url: `/api/v2/leave/leave-requests?limit=50&offset=0&fromDate=2023-01-01&toDate=2024-08-24&includeEmployees=onlyCurrent&statuses[]=2`,
+      url: `api/v2/leave/employees/leave-requests/${leaveId}`,
+      body: leaveRequestActionStatusBody(action),
     });
   }
 }
