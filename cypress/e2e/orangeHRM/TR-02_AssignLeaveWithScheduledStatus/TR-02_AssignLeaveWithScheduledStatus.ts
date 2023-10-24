@@ -23,7 +23,7 @@ const employee: NewEmployee = getEmployee();
 const user: NewUser = {
   ...getUser(),
 };
-let id = 0;
+let id: number;
 let employeeRes: any;
 beforeEach(() => {
   userDataUtil.deleteUserByUsername(user.username);
@@ -46,10 +46,12 @@ Given("The employee has number of entitlement", () => {
     ...getLeaveEntitlements(),
     empNumber: employeeRes.body.data.employee.empNumber,
   });
-  cy.logout();
+  cy.then(() => {
+    cy.logout();
+  });
 });
 When("The employee login to the system", () => {
-  cy.login("Cypress test T", "strongPassword@123456");
+  cy.login(user.username, user.password);
 });
 When("The employee requests a leave day in the future", () => {
   leaveDataUtil.createNewLeaveRequest({ ...getLeaveRequest() }).then((res) => {
@@ -77,5 +79,16 @@ Then(
       getLeaveRequest().fromDate,
       getLeaveRequest().toDate
     );
+    cy.then(() => {
+      cy.logout();
+    });
   }
 );
+afterEach(() => {
+  cy.then(() => {
+    cy.login();
+  }).then(() => {
+    userDataUtil.deleteUserByUsername(user.username);
+    employeeDataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
+  });
+});
