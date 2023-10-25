@@ -1,6 +1,6 @@
 import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
-import createCandidateActions from "../../../pageObjects/TR-01_CreateCandidate/TR-01_CreateCandidateActions";
-import createCandidateAssertions from "../../../pageObjects/TR-01_CreateCandidate/TR-01_CreateCandidateAssertions";
+import createCandidateActions from "@pageObjects/candidatePage/TR-01_CreateCandidateActions";
+import createCandidateAssertions from "@pageObjects/candidatePage/TR-01_CreateCandidateAssertions";
 
 const createCandidateAction = new createCandidateActions();
 const createCandidateAssertion = new createCandidateAssertions();
