@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="499ed323-ab72-4787-ba09-7cfdc44b8339" name="Changes" comment="-edit leaveRequest name&#10;-made leavePageAssertions general">
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/orangeHRM/TR-01_CreateCandidate/TR-01_CreateCandidate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/orangeHRM/TR-01_CreateCandidate/TR-01_CreateCandidate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/orangeHRM/TR-03_AssignLeaveWithScheduledStatus/TR-03_AssignLeaveWithScheduledStatus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/orangeHRM/TR-03_AssignLeaveWithScheduledStatus/TR-03_AssignLeaveWithScheduledStatus.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/orangeHRM/employeePage/employeePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/orangeHRM/employeePage/employeePage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/candidatePage/TR-01_CreateCandidateActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/candidatePage/candidatePageActions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/candidatePage/TR-01_CreateCandidateAssertions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/candidatePage/candidatePageAssertions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/employeePage/dataUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/employeePage/dataUtils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/support/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/support/utils.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="leave-page" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2WGhdjReySKzd77jxl4BK46PI28" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/abdal/IdeaProjects/cypress-task&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;google.prototext.language&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\abdal\\IdeaProjects\\cypress-task\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\abdal\IdeaProjects\cypress-task\cypress\support\employeePage" />
+      <recent name="C:\Users\abdal\IdeaProjects\cypress-task\cypress\e2e\orangeHRM" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="cypress-test-repo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="cypress-test-repo" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="499ed323-ab72-4787-ba09-7cfdc44b8339" name="Changes" comment="" />
+      <created>1696364914261</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696364914261</updated>
+      <workItem from="1696364915424" duration="1249000" />
+      <workItem from="1696414968036" duration="28354000" />
+      <workItem from="1696491954735" duration="12397000" />
+      <workItem from="1696591718292" duration="2905000" />
+      <workItem from="1696760876379" duration="20375000" />
+      <workItem from="1696840679899" duration="8331000" />
+      <workItem from="1696923674895" duration="9965000" />
+      <workItem from="1696937148753" duration="1080000" />
+      <workItem from="1696951427966" duration="1444000" />
+      <workItem from="1696958547581" duration="37000" />
+      <workItem from="1696958746332" duration="2000" />
+      <workItem from="1697014553068" duration="7383000" />
+      <workItem from="1697022997321" duration="5697000" />
+      <workItem from="1697101543056" duration="9979000" />
+      <workItem from="1697111829928" duration="2114000" />
+      <workItem from="1697113974026" duration="5096000" />
+      <workItem from="1697122707453" duration="26000" />
+      <workItem from="1697133832502" duration="8221000" />
+      <workItem from="1697190422782" duration="4000" />
+      <workItem from="1697210169880" duration="17000" />
+      <workItem from="1697213504240" duration="5170000" />
+      <workItem from="1697282874971" duration="832000" />
+      <workItem from="1697359732433" duration="27814000" />
+      <workItem from="1697404126230" duration="3052000" />
+      <workItem from="1697432879969" duration="310000" />
+      <workItem from="1697448561732" duration="9400000" />
+      <workItem from="1697534383091" duration="16028000" />
+      <workItem from="1697626416169" duration="4014000" />
+      <workItem from="1697710865789" duration="2162000" />
+      <workItem from="1697967691740" duration="22132000" />
+      <workItem from="1698054008727" duration="23138000" />
+      <workItem from="1698085993485" duration="99000" />
+      <workItem from="1698136220962" duration="4034000" />
+      <workItem from="1698149150310" duration="252000" />
+      <workItem from="1698154640542" duration="2759000" />
+      <workItem from="1698169655739" duration="6726000" />
+      <workItem from="1698262415186" duration="138000" />
+      <workItem from="1698345204540" duration="5306000" />
+      <workItem from="1698404838302" duration="334000" />
+      <workItem from="1698484096923" duration="875000" />
+      <workItem from="1698484990874" duration="4642000" />
+      <workItem from="1698567194678" duration="11000" />
+    </task>
+    <task id="LOCAL-00001" summary="test AddEmployee and deleteEmployee Request">
+      <option name="closed" value="true" />
+      <created>1696498578951</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696498578951</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add changes">
+      <option name="closed" value="true" />
+      <created>1696937513665</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696937513665</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add changes">
+      <option name="closed" value="true" />
+      <created>1696952459093</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696952459093</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add changes">
+      <option name="closed" value="true" />
+      <created>1696953418887</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696953418887</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Search Employee By Id">
+      <option name="closed" value="true" />
+      <created>1697019748652</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1697019748652</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Search Employee By Id">
+      <option name="closed" value="true" />
+      <created>1697021212910</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1697021212910</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Search Employee By Id">
+      <option name="closed" value="true" />
+      <created>1697022830245</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697022830245</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Rename pageObject Folder">
+      <option name="closed" value="true" />
+      <created>1697023076963</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697023076964</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add EmployeeData in types file and made changes in create employee function">
+      <option name="closed" value="true" />
+      <created>1697028040839</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697028040839</updated>
+    </task>
+    <task id="LOCAL-00010" summary="uncomment scenarios">
+      <option name="closed" value="true" />
+      <created>1697028243162</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1697028243162</updated>
+    </task>
+    <task id="LOCAL-00011" summary="create employee constants and createNewEmployeeBody">
+      <option name="closed" value="true" />
+      <created>1697103917022</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697103917022</updated>
+    </task>
+    <task id="LOCAL-00012" summary="create deleteEmployeeByEmployeeId function">
+      <option name="closed" value="true" />
+      <created>1697360248673</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1697360248673</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add delete user request and create user request functions">
+      <option name="closed" value="true" />
+      <created>1697433148730</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1697433148730</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix some details">
+      <option name="closed" value="true" />
+      <created>1697450499443</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1697450499443</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix user types">
+      <option name="closed" value="true" />
+      <created>1697461791067</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1697461791067</updated>
+    </task>
+    <task id="LOCAL-00016" summary="create add employee with user request">
+      <option name="closed" value="true" />
+      <created>1697537929958</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1697537929958</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix some details">
+      <option name="closed" value="true" />
+      <created>1697539938606</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1697539938606</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add prefix and built createCandidate UI test">
+      <option name="closed" value="true" />
+      <created>1697554195664</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1697554195664</updated>
+    </task>
+    <task id="LOCAL-00019" summary="add dataFakers in user page and employee page &#10;edit some details">
+      <option name="closed" value="true" />
+      <created>1697630047082</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1697630047082</updated>
+    </task>
+    <task id="LOCAL-00020" summary="edit some details">
+      <option name="closed" value="true" />
+      <created>1697630626171</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1697630626171</updated>
+    </task>
+    <task id="LOCAL-00021" summary="-Add Intercept In Recruitment Page&#10;-Format Documents">
+      <option name="closed" value="true" />
+      <created>1697714904703</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1697714904703</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Create Assign leave with Scheduled status Scenario">
+      <option name="closed" value="true" />
+      <created>1697993535077</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1697993535077</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix some details">
+      <option name="closed" value="true" />
+      <created>1698068395497</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1698068395497</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix some details">
+      <option name="closed" value="true" />
+      <created>1698085710686</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1698085710686</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fix some details">
+      <option name="closed" value="true" />
+      <created>1698147592830</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1698147592830</updated>
+    </task>
+    <task id="LOCAL-00026" summary="change TR-02_AssignLeaveWithScheduledStatus folder name to TR-03_AssignLeaveWithScheduledStatus">
+      <option name="closed" value="true" />
+      <created>1698149322955</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1698149322955</updated>
+    </task>
+    <task id="LOCAL-00027" summary="-edit leaveRequest name&#10;-made leavePageAssertions general">
+      <option name="closed" value="true" />
+      <created>1698178406577</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1698178406577</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test AddEmployee and deleteEmployee Request" />
+    <MESSAGE value="add changes" />
+    <MESSAGE value="Search Employee By Id" />
+    <MESSAGE value="Rename pageObject Folder" />
+    <MESSAGE value="add EmployeeData in types file and made changes in create employee function" />
+    <MESSAGE value="uncomment scenarios" />
+    <MESSAGE value="create employee constants and createNewEmployeeBody" />
+    <MESSAGE value="create deleteEmployeeByEmployeeId function" />
+    <MESSAGE value="add delete user request and create user request functions" />
+    <MESSAGE value="fix user types" />
+    <MESSAGE value="create add employee with user request" />
+    <MESSAGE value="add prefix and built createCandidate UI test" />
+    <MESSAGE value="add dataFakers in user page and employee page &#10;edit some details" />
+    <MESSAGE value="edit some details" />
+    <MESSAGE value="-Add Intercept In Recruitment Page&#10;-Format Documents" />
+    <MESSAGE value="Create Assign leave with Scheduled status Scenario" />
+    <MESSAGE value="fix some details" />
+    <MESSAGE value="change TR-02_AssignLeaveWithScheduledStatus folder name to TR-03_AssignLeaveWithScheduledStatus" />
+    <MESSAGE value="-edit leaveRequest name&#10;-made leavePageAssertions general" />
+    <option name="LAST_COMMIT_MESSAGE" value="-edit leaveRequest name&#10;-made leavePageAssertions general" />
+  </component>
+</project>

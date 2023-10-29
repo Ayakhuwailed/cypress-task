@@ -1,0 +1,33 @@
+Index: cypress/PageObject/employeePage/dataUtils.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>export default class DataUtils{\r\n    addEmployeeReq() {\r\n        return cy.request({\r\n            method: 'POST', url: '/api/v2/pim/employees', body:\r\n                {\r\n                    empPicture: null,\r\n                    employeeId: \"415\",\r\n                    firstName: \"test\",\r\n                    lastName: \"test\",\r\n                    middleName: \"test\"\r\n                }\r\n        }).then((res) : number=>{\r\n            return res.body.data.empNumber\r\n        });\r\n    }\r\n    deleteEmployeeReq(ids:number[]) {\r\n        cy.request({\r\n            method: 'DELETE', url: '/api/v2/pim/employees',\r\n            body: {ids}\r\n        })\r\n    }\r\n\r\n    getEmployeeByEmployeeId(id){\r\n        cy.request(`/api/v2/pim/employees?limit=50&offset=0&model=detailed&employeeId=${id}&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC`).then((res)=>{\r\n            cy.log(res.body)\r\n        })\r\n\r\n    }\r\n}
+===================================================================
+diff --git a/cypress/PageObject/employeePage/dataUtils.ts b/cypress/PageObject/employeePage/dataUtils.ts
+--- a/cypress/PageObject/employeePage/dataUtils.ts	
++++ b/cypress/PageObject/employeePage/dataUtils.ts	
+@@ -1,5 +1,5 @@
+-export default class DataUtils{
+-    addEmployeeReq() {
++export default class EmployeePageDataUtils{
++    createEmployee() {
+         return cy.request({
+             method: 'POST', url: '/api/v2/pim/employees', body:
+                 {
+@@ -13,14 +13,14 @@
+             return res.body.data.empNumber
+         });
+     }
+-    deleteEmployeeReq(ids:number[]) {
++    deleteEmployee(ids:number[]) {
+         cy.request({
+             method: 'DELETE', url: '/api/v2/pim/employees',
+             body: {ids}
+         })
+     }
+ 
+-    getEmployeeByEmployeeId(id){
++    getEmployeeByEmployeeId(id:string){
+         cy.request(`/api/v2/pim/employees?limit=50&offset=0&model=detailed&employeeId=${id}&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC`).then((res)=>{
+             cy.log(res.body)
+         })

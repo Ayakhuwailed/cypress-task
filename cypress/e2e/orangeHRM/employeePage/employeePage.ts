@@ -17,6 +17,7 @@ const employee: NewEmployee = getEmployee();
 const user: NewUser = { ...getUser(), empNumber: 7 };
 
 beforeEach(() => {
+  userDataUtil.deleteUserByUsername(user.username);
   dataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
 });
 
@@ -51,7 +52,7 @@ Then("Post Employee With User Request Done", () => {
   dataUtil.createNewEmployee(employee).then((res) => {
     userDataUtil.createNewUser({
       ...user,
-      empNumber: res.body.data.empNumber,
+      empNumber: res,
     });
   });
 });

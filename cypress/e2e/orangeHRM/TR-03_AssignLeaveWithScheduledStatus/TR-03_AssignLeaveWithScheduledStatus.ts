@@ -23,7 +23,7 @@ const user: NewUser = {
   ...getUser(),
 };
 let id: number;
-let employeeRes: any;
+let globalEmpNumber: any;
 beforeEach(() => {
   userDataUtil.deleteUserByUsername(user.username);
   employeeDataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
@@ -33,17 +33,17 @@ Given("The system has an Employee with Login Details", () => {
     userDataUtil
       .createNewUser({
         ...user,
-        empNumber: res.body.data.empNumber,
+        empNumber: res,
       })
       .then((res) => {
-        employeeRes = res;
+        globalEmpNumber = res.body.data.employee.empNumber;
       });
   });
 });
 Given("The employee has number of entitlement", () => {
   leaveDataUtil.createNewLeaveEntitlements({
     ...getLeaveEntitlements(),
-    empNumber: employeeRes.body.data.employee.empNumber,
+    empNumber: globalEmpNumber,
   });
   cy.then(() => {
     cy.logout();

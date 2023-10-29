@@ -1,4 +1,4 @@
-export default class AddCandidatePageActions {
+export default class candidatePageActions {
   openAddCandidatePage() {
     cy.intercept("/web/index.php/api/v2/recruitment/vacancies***").as(
       "vacancies"

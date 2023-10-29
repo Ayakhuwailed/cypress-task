@@ -1,16 +1,23 @@
 import { createNewEmployeeBody } from "@support/employeePage/constants";
 import { NewEmployee } from "@support/employeePage/createDataTypes";
 import { EmployeeData } from "@support/employeePage/types";
+import * as cypress from "cypress";
 export default class EmployeeDataUtils {
-  createNewEmployee(employee: NewEmployee) {
-    return this.getEmployeeByEmployeeId(employee.employeeId).then((emp) => {
-      this.deleteEmployeeByEmployeeId(emp.employeeId);
-      return cy.request({
-        method: "POST",
-        url: "/api/v2/pim/employees",
-        body: createNewEmployeeBody(employee),
-      });
-    });
+  createNewEmployee(employee: NewEmployee): Cypress.Chainable<number> {
+    return this.getEmployeeByEmployeeId(employee.employeeId).then(
+      (emp): Cypress.Chainable<number> => {
+        this.deleteEmployeeByEmployeeId(emp.employeeId);
+        return cy
+          .request({
+            method: "POST",
+            url: "/api/v2/pim/employees",
+            body: createNewEmployeeBody(employee),
+          })
+          .then((res) => {
+            return res.body.data.empNumber;
+          });
+      }
+    );
   }
   deleteEmployeeByEmployeeId(id: string) {
     this.getEmployeeByEmployeeId(id).then((res) => {

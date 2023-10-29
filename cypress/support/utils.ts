@@ -1,6 +1,14 @@
 export const getPrefix = (): string => {
-  if (window.location.pathname.includes("%2F")) {
-    return window.location.pathname.split("%2F").pop().split("_")[0];
+  let url = window.location.pathname;
+  if (url.includes("%2F")) {
+    return getNameWithUnderscore(url.split("%2F").pop());
   }
-  return window.location.pathname.split("%5C").pop().split("_")[0];
+  return getNameWithUnderscore(url.split("%5C").pop());
 };
+
+function getNameWithUnderscore(fileName: string): string {
+  if (fileName.includes("_")) {
+    return fileName.split("_")[0];
+  }
+  return "";
+}

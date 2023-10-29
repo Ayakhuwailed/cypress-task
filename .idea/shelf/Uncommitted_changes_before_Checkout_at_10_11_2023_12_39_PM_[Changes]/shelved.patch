@@ -1,0 +1,39 @@
+Index: cypress/e2e/orangeHRM/employeeRequest/employeeRequest.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {And, Then, When} from \"@badeball/cypress-cucumber-preprocessor\";\r\nimport employeeActions from \"../../../pageObject/addEmployee/employeeActions\"\r\nimport employeeAssertions from \"../../../pageObject/addEmployee/employeeAssertions\"\r\n\r\nlet employeeAction = new employeeActions();\r\nlet employeeAssertion = new employeeAssertions();\r\nlet employeesAddedIds: number[] = []\r\nbeforeEach(() => {\r\n    cy.login()\r\n})\r\n\r\nWhen('User Navigates to Add Employee Page', () => {\r\n    employeeAction.navigateToAddEmployeePage()\r\n})\r\nAnd('User Fills the Inputs', () => {\r\n    employeeAction.fillAddEmployeeInputs()\r\n})\r\nAnd('User Clicks On Save Button', () => {\r\n    employeeAction.clickOnSaveButton()\r\n})\r\nThen('Successfully Added Toast', () => {\r\n    employeeAssertion.successfullyAddedToast()\r\n    employeeAction.getId().then((id: number) => {\r\n        employeesAddedIds.push(id)\r\n    })\r\n\r\n})\r\nThen('Post Request Done', () => {\r\n    employeeAction.addEmployeeReq().then((id: number) => {\r\n        employeesAddedIds.push(id)\r\n    })\r\n})\r\nafterEach(() => {\r\n    employeeAction.deleteEmployeeReq(employeesAddedIds)\r\n    employeesAddedIds = [];\r\n})
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cypress/e2e/orangeHRM/employeeRequest/employeeRequest.ts b/cypress/e2e/orangeHRM/employeeRequest/employeeRequest.ts
+--- a/cypress/e2e/orangeHRM/employeeRequest/employeeRequest.ts	
++++ b/cypress/e2e/orangeHRM/employeeRequest/employeeRequest.ts	
+@@ -1,9 +1,11 @@
+ import {And, Then, When} from "@badeball/cypress-cucumber-preprocessor";
+-import employeeActions from "../../../pageObject/addEmployee/employeeActions"
+-import employeeAssertions from "../../../pageObject/addEmployee/employeeAssertions"
++import employeeActions from "../../../pageObject/employeePage/employeeActions"
++import employeeAssertions from "../../../pageObject/employeePage/employeeAssertions"
++import dataUtils from "../../../pageObject/employeePage/dataUtils"
+ 
+ let employeeAction = new employeeActions();
+ let employeeAssertion = new employeeAssertions();
++let dataUtil = new dataUtils();
+ let employeesAddedIds: number[] = []
+ beforeEach(() => {
+     cy.login()
+@@ -26,11 +28,11 @@
+ 
+ })
+ Then('Post Request Done', () => {
+-    employeeAction.addEmployeeReq().then((id: number) => {
++    dataUtil.addEmployeeReq().then((id: number) => {
+         employeesAddedIds.push(id)
+     })
+ })
+ afterEach(() => {
+-    employeeAction.deleteEmployeeReq(employeesAddedIds)
++    dataUtil.deleteEmployeeReq(employeesAddedIds)
+     employeesAddedIds = [];
+ })
+\ No newline at end of file
