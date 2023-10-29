@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="499ed323-ab72-4787-ba09-7cfdc44b8339" name="Changes" comment="-edit leaveRequest name&#10;-made leavePageAssertions general">
-      <change beforePath="$PROJECT_DIR$/cypress/e2e/orangeHRM/TR-01_CreateCandidate/TR-01_CreateCandidate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/orangeHRM/TR-01_CreateCandidate/TR-01_CreateCandidate.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/e2e/orangeHRM/TR-03_AssignLeaveWithScheduledStatus/TR-03_AssignLeaveWithScheduledStatus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/orangeHRM/TR-03_AssignLeaveWithScheduledStatus/TR-03_AssignLeaveWithScheduledStatus.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/e2e/orangeHRM/employeePage/employeePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/orangeHRM/employeePage/employeePage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/candidatePage/TR-01_CreateCandidateActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/candidatePage/candidatePageActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/candidatePage/TR-01_CreateCandidateAssertions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/candidatePage/candidatePageAssertions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/employeePage/dataUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/employeePage/dataUtils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/support/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/support/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;update-branch&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/abdal/IdeaProjects/cypress-task&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -145,6 +140,10 @@
       <workItem from="1698484096923" duration="875000" />
       <workItem from="1698484990874" duration="4642000" />
       <workItem from="1698567194678" duration="11000" />
+      <workItem from="1698576490990" duration="1000" />
+      <workItem from="1698577190275" duration="182000" />
+      <workItem from="1698608266549" duration="18000" />
+      <workItem from="1698608431976" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="test AddEmployee and deleteEmployee Request">
       <option name="closed" value="true" />
