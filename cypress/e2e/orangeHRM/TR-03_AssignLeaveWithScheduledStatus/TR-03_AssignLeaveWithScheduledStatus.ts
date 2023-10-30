@@ -10,14 +10,15 @@ import {
   getLeaveEntitlements,
   getLeaveRequest,
 } from "@support/leavePage/dataFakers";
-import LeavePageAssertions from "../../../pageObjects/leavePage/leavePageAssertions";
 import LeavePageActions from "../../../pageObjects/leavePage/leavePageActions";
-
+import Actions from "@support/shared/actions";
+import Assertions from "@support/shared/assertions";
 const employeeDataUtil = new EmployeeDataUtils();
 const userDataUtil = new UserDataUtils();
 const leaveDataUtil = new LeaveDataUtils();
-const leavePageAssertion = new LeavePageAssertions();
-const leavePageAction = new LeavePageActions();
+const LeavePageAction = new LeavePageActions();
+const action = new Actions();
+const assertion = new Assertions();
 const employee: NewEmployee = getEmployee();
 const user: NewUser = {
   ...getUser(),
@@ -69,24 +70,24 @@ When("The admin approves the leave request", () => {
   });
 });
 When("The employee Opens the My Leave page", () => {
-  leavePageAction.openLeavePage();
+  LeavePageAction.openLeavePage();
 });
 Then(
   "The leave should exist in the records table with status Scheduled",
   () => {
-    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+    assertion.checkTableContainsValueInColumnByRow(
       0,
       "Status",
       "Scheduled",
       true
     );
-    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+    assertion.checkTableContainsValueInColumnByRow(
       0,
       "Date",
       getLeaveRequest().fromDate,
       true
     );
-    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+    assertion.checkTableContainsValueInColumnByRow(
       0,
       "Date",
       getLeaveRequest().toDate,
