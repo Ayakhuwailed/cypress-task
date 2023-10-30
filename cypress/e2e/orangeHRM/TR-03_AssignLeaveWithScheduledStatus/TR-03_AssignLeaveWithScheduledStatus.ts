@@ -10,20 +10,19 @@ import {
   getLeaveEntitlements,
   getLeaveRequest,
 } from "@support/leavePage/dataFakers";
-import LeavePageAssertions from "../../../pageObjects/leavePage/leavePageAssertions";
 import LeavePageActions from "../../../pageObjects/leavePage/leavePageActions";
-
+import SharedAssertions from "@support/shared/assertions";
 const employeeDataUtil = new EmployeeDataUtils();
 const userDataUtil = new UserDataUtils();
 const leaveDataUtil = new LeaveDataUtils();
-const leavePageAssertion = new LeavePageAssertions();
 const leavePageAction = new LeavePageActions();
+const sharedAssertion = new SharedAssertions();
 const employee: NewEmployee = getEmployee();
 const user: NewUser = {
   ...getUser(),
 };
 let id: number;
-let employeeRes: any;
+let globalEmpNumber: any;
 beforeEach(() => {
   userDataUtil.deleteUserByUsername(user.username);
   employeeDataUtil.deleteEmployeeByEmployeeId(employee.employeeId);
@@ -33,17 +32,17 @@ Given("The system has an Employee with Login Details", () => {
     userDataUtil
       .createNewUser({
         ...user,
-        empNumber: res.body.data.empNumber,
+        empNumber: res,
       })
       .then((res) => {
-        employeeRes = res;
+        globalEmpNumber = res.body.data.employee.empNumber;
       });
   });
 });
 Given("The employee has number of entitlement", () => {
   leaveDataUtil.createNewLeaveEntitlements({
     ...getLeaveEntitlements(),
-    empNumber: employeeRes.body.data.employee.empNumber,
+    empNumber: globalEmpNumber,
   });
   cy.then(() => {
     cy.logout();
@@ -74,19 +73,19 @@ When("The employee Opens the My Leave page", () => {
 Then(
   "The leave should exist in the records table with status Scheduled",
   () => {
-    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+    sharedAssertion.checkTableContainsValueInColumnByRow(
       0,
       "Status",
       "Scheduled",
       true
     );
-    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+    sharedAssertion.checkTableContainsValueInColumnByRow(
       0,
       "Date",
       getLeaveRequest().fromDate,
       true
     );
-    leavePageAssertion.checkLeaveRecordContainsValueInColumn(
+    sharedAssertion.checkTableContainsValueInColumnByRow(
       0,
       "Date",
       getLeaveRequest().toDate,

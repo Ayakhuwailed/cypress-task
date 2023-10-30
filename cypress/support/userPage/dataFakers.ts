@@ -1,4 +1,4 @@
-import { getPrefix } from "@support/utils";
+import { getPrefix } from "@support/shared/utils";
 import { NewUser } from "@support/userPage/createDataTypes";
 
 export const getUser = (prefix: string = getPrefix()): NewUser => {

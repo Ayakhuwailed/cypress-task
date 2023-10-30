@@ -24,7 +24,7 @@ export default class LeaveDataUtils {
       body: createNewLeaveRequestBody(leave),
     });
   }
-  setLeaveRequestActionStatusByLeaveId( leaveId: number,action: LeaveAction) {
+  setLeaveRequestActionStatusByLeaveId(leaveId: number, action: LeaveAction) {
     return cy.request({
       method: "PUT",
       url: `api/v2/leave/employees/leave-requests/${leaveId}`,
