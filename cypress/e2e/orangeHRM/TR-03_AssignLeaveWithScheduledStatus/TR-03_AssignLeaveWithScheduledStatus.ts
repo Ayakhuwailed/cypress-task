@@ -11,7 +11,6 @@ import {
   getLeaveRequest,
 } from "@support/leavePage/dataFakers";
 import LeavePageActions from "../../../pageObjects/leavePage/leavePageActions";
-import SharedActions from "@support/shared/actions";
 import SharedAssertions from "@support/shared/assertions";
 const employeeDataUtil = new EmployeeDataUtils();
 const userDataUtil = new UserDataUtils();

@@ -1,14 +1,14 @@
-import actions from "./actions";
+import SharedActions from "./actions";
 
 export default class SharedAssertions {
-  action = new actions();
+  sharedAction = new SharedActions();
   checkTableContainsValueInColumnByRow(
     rowNumber: number,
     headerName: string,
     value: string,
     isExist: boolean
   ) {
-    this.action.getTableHeaderIndex(headerName).then((headerIndex) => {
+    this.sharedAction.getTableHeaderIndex(headerName).then((headerIndex) => {
       cy.get(".oxd-table-body")
         .find("div[role=row]")
         .eq(rowNumber)
