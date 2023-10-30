@@ -1,4 +1,4 @@
-export default class Actions {
+export default class SharedActions {
   getTableHeaderIndex(headerName: string) {
     return cy
       .get(".oxd-table-header")
