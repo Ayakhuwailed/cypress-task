@@ -1,6 +1,6 @@
 Feature: Candidate Page
-Background:
-Given User Navigate to Candidate Page
+  Background:
+    Given User Navigate to Candidate Page
 
   Scenario: Add Candidate
     When User Fills The Inputs

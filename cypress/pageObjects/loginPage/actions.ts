@@ -1,4 +1,4 @@
-export default class loginPageActions {
+export default class LoginPageActions {
   typeInUsernameInputField(username: string) {
     cy.get('[name="username"]').type(username);
   }

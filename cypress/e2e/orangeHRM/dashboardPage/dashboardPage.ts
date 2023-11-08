@@ -1,9 +1,9 @@
 import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
-import dashboardPageActions from "../../../pageObjects/dashboardPage/dashboardActions";
-import dashboardAssertion from "../../../pageObjects/dashboardPage/dashboardAssertions";
+import DashboardPageActions from "../../../pageObjects/dashboardPage/actions";
+import DashboardAssertion from "../../../pageObjects/dashboardPage/assertions";
 
-const dashboardPageAction = new dashboardPageActions();
-const dashboardAssertions = new dashboardAssertion();
+const dashboardPageAction = new DashboardPageActions(),
+  dashboardAssertions = new DashboardAssertion();
 
 Given("User Login Successfully", () => {
   cy.login();

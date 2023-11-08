@@ -1,6 +1,6 @@
 import { createNewUserBody } from "@support/userPage/constants";
 import { NewUser } from "@support/userPage/createDataTypes";
-import { UserData } from "@support/userPage/types";
+import { UserResponseData } from "@support/userPage/types";
 
 export default class UserDataUtils {
   createNewUser(user: NewUser) {
@@ -28,7 +28,7 @@ export default class UserDataUtils {
     });
   }
 
-  getUserByUsername(username: string): Cypress.Chainable<UserData> {
+  getUserByUsername(username: string): Cypress.Chainable<UserResponseData> {
     return cy
       .request(
         `/api/v2/admin/users?limit=50&offset=0&username=${username}&sortField=u.userName&sortOrder=ASC`

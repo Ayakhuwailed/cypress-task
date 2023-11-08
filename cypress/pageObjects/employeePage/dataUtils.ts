@@ -1,7 +1,7 @@
 import { createNewEmployeeBody } from "@support/employeePage/constants";
 import { NewEmployee } from "@support/employeePage/createDataTypes";
-import { EmployeeData } from "@support/employeePage/types";
-import * as cypress from "cypress";
+import { EmployeeResponseData } from "@support/employeePage/types";
+
 export default class EmployeeDataUtils {
   createNewEmployee(employee: NewEmployee): Cypress.Chainable<number> {
     return this.getEmployeeByEmployeeId(employee.employeeId).then(
@@ -19,6 +19,7 @@ export default class EmployeeDataUtils {
       }
     );
   }
+
   deleteEmployeeByEmployeeId(id: string) {
     this.getEmployeeByEmployeeId(id).then((res) => {
       if (Array.isArray(res) && res.length === 0) {
@@ -33,7 +34,7 @@ export default class EmployeeDataUtils {
     });
   }
 
-  getEmployeeByEmployeeId(id: string): Cypress.Chainable<EmployeeData> {
+  getEmployeeByEmployeeId(id: string): Cypress.Chainable<EmployeeResponseData> {
     return cy
       .request(
         `/api/v2/pim/employees?limit=50&offset=0&model=detailed&employeeId=${id}&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC`

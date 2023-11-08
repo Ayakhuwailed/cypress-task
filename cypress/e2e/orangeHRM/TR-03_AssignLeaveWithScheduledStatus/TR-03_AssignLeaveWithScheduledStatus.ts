@@ -10,19 +10,21 @@ import {
   getLeaveEntitlements,
   getLeaveRequest,
 } from "@support/leavePage/dataFakers";
-import LeavePageActions from "../../../pageObjects/leavePage/leavePageActions";
+import LeavePageActions from "../../../pageObjects/leavePage/actions";
 import SharedAssertions from "@support/shared/assertions";
-const employeeDataUtil = new EmployeeDataUtils();
-const userDataUtil = new UserDataUtils();
-const leaveDataUtil = new LeaveDataUtils();
-const leavePageAction = new LeavePageActions();
-const sharedAssertion = new SharedAssertions();
-const employee: NewEmployee = getEmployee();
-const user: NewUser = {
-  ...getUser(),
-};
-let id: number;
-let globalEmpNumber: any;
+
+const employeeDataUtil = new EmployeeDataUtils(),
+  userDataUtil = new UserDataUtils(),
+  leaveDataUtil = new LeaveDataUtils(),
+  leavePageAction = new LeavePageActions(),
+  sharedAssertion = new SharedAssertions(),
+  employee: NewEmployee = getEmployee(),
+  user: NewUser = {
+    ...getUser(),
+  };
+
+let id: number, globalEmpNumber: number;
+
 beforeEach(() => {
   userDataUtil.deleteUserByUsername(user.username);
   employeeDataUtil.deleteEmployeeByEmployeeId(employee.employeeId);

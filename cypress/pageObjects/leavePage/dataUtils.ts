@@ -17,6 +17,7 @@ export default class LeaveDataUtils {
       body: createNewLeaveEntitlementsBody(leave),
     });
   }
+
   createNewLeaveRequest(leave: NewLeaveRequest) {
     return cy.request({
       method: "POST",
@@ -24,6 +25,7 @@ export default class LeaveDataUtils {
       body: createNewLeaveRequestBody(leave),
     });
   }
+
   setLeaveRequestActionStatusByLeaveId(leaveId: number, action: LeaveAction) {
     return cy.request({
       method: "PUT",

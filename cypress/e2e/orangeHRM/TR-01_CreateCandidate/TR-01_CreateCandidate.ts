@@ -1,20 +1,27 @@
 import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
-import createCandidateActions from "@pageObjects/candidatePage/candidatePageActions";
-import createCandidateAssertions from "@pageObjects/candidatePage/candidatePageAssertions";
+import CreateCandidateActions from "@pageObjects/candidatePage/actions";
+import CreateCandidateAssertions from "@pageObjects/candidatePage/assertions";
+import { NewCandidate } from "@support/candidatePage/createDataTypes";
+import { getCandidate } from "@support/candidatePage/dataFakers.js";
 
-const createCandidateAction = new createCandidateActions();
-const createCandidateAssertion = new createCandidateAssertions();
+const createCandidateAction = new CreateCandidateActions(),
+  createCandidateAssertion = new CreateCandidateAssertions(),
+  candidate: NewCandidate = getCandidate();
+
 Given("User Navigate to Candidate Page", () => {
   createCandidateAction.openAddCandidatePage();
 });
+
 When("User Fills The Inputs", () => {
-  createCandidateAction.typeInFirstNameInputField("test");
-  createCandidateAction.typeInLastNameInputField("test");
-  createCandidateAction.typeInEmailInputField("test@test.com");
+  createCandidateAction.typeInFirstNameInputField(candidate.firstName);
+  createCandidateAction.typeInLastNameInputField(candidate.lastName);
+  createCandidateAction.typeInEmailInputField(candidate.email);
 });
+
 When("Click On Save Button", () => {
   createCandidateAction.clickOnSaveButton();
 });
+
 Then("User Should Navigate To Recruitment Page", () => {
   createCandidateAssertion.checkAddCandidatePageIsOpen();
 });

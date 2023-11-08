@@ -1,18 +1,17 @@
 import {
-  And,
   Before,
   DataTable,
   Given,
   Then,
   When,
 } from "@badeball/cypress-cucumber-preprocessor";
-import dashboardAssertion from "../../../pageObjects/dashboardPage/dashboardAssertions";
-import loginPageActions from "../../../pageObjects/login/loginActions";
-import loginPageAssertions from "../../../pageObjects/login/loginAssertions";
+import DashboardAssertions from "../../../pageObjects/dashboardPage/assertions";
+import LoginPageActions from "../../../pageObjects/loginPage/actions";
+import LoginPageAssertions from "../../../pageObjects/loginPage/assertions";
 
-const loginActions = new loginPageActions();
-const loginAssertions = new loginPageAssertions();
-const dashboardAssertions = new dashboardAssertion();
+const loginActions = new LoginPageActions(),
+  loginAssertions = new LoginPageAssertions(),
+  dashboardAssertions = new DashboardAssertions();
 
 Before(() => {
   cy.reload();

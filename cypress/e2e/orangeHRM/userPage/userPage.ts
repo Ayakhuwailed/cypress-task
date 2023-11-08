@@ -1,12 +1,12 @@
 import { Then } from "@badeball/cypress-cucumber-preprocessor";
 import { NewUser } from "@support/userPage/createDataTypes";
-import dataUtils from "../../../pageObjects/userPage/dataUtils";
+import UserDataUtils from "../../../pageObjects/userPage/dataUtils";
 import { getUser } from "@support/userPage/dataFakers";
 
-const dataUtil = new dataUtils();
+const dataUtil = new UserDataUtils(),
+  empNumber = 7,
+  user: NewUser = { ...getUser(), empNumber };
 
-const empNumber = 7;
-const user: NewUser = { ...getUser(), empNumber };
 beforeEach(() => {
   dataUtil.deleteUserByUsername(user.username);
 });
